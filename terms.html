@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | VP Machine Technologies</title>
+  <meta name="description" content="Read the Terms and Conditions governing the use of the VP Machine Technologies website and services. Effective 16 July 2026.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Page-specific styles for Terms page ── */
+    .terms-hero {
+      background-color: var(--bg-tertiary);
+      padding-top: 190px;
+      padding-bottom: 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .terms-hero .effective-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background-color: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-top: 1rem;
+    }
+
+    .terms-hero .effective-date span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .terms-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      align-items: start;
+      padding: 4rem 0 6rem;
+    }
+
+    /* Sticky Table of Contents */
+    .terms-toc {
+      position: sticky;
+      top: 110px;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .terms-toc-title {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .terms-toc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .terms-toc a {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .terms-toc a:hover {
+      color: var(--accent);
+      background-color: rgba(var(--accent-rgb), 0.06);
+    }
+
+    /* Main content */
+    .terms-content {
+      max-width: 780px;
+    }
+
+    .terms-intro {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 1.5rem 2rem;
+      background-color: var(--bg-secondary);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 3rem;
+    }
+
+    .terms-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .terms-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .terms-section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .terms-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .terms-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 0.975rem;
+    }
+
+    .terms-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 0.75rem 0 1rem 0;
+    }
+
+    .terms-section ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.975rem;
+      line-height: 1.7;
+    }
+
+    .terms-section ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      margin-top: 0.55rem;
+    }
+
+    /* Contact card at the bottom */
+    .terms-contact-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .terms-contact-card .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.975rem;
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+    }
+
+    .terms-contact-card .contact-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .terms-contact-card .contact-icon {
+      font-size: 1.1rem;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .terms-contact-card a {
+      color: var(--accent);
+    }
+
+    .terms-contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .terms-contact-card strong {
+      color: var(--text-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .terms-layout {
+        grid-template-columns: 1fr;
+      }
+      .terms-toc {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .terms-hero {
+        padding-top: 140px;
+        padding-bottom: 3rem;
+      }
+    }
+  </style>
+</head>
+<body class="page-terms">
+
+  <!-- ===== TOP INFO BAR ===== -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <a href="mailto:vpmachinetechnologies@gmail.com" class="topbar-item">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          vpmachinetechnologies@gmail.com
+        </a>
+        <a href="tel:+916360666755" class="topbar-item">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          +91 6360666755
+        </a>
+        <span class="topbar-item topbar-location">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Udyambag Industrial Estate, Belagavi - 590008
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logo-nav">
+        <img src="assets/images/logo-dark.png" alt="VP Machine Technologies" class="logo-img logo-img-dark">
+        <img src="assets/images/logo-light.png" alt="VP Machine Technologies" class="logo-img logo-img-light">
+      </a>
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle dark/light theme" id="theme-toggle">
+          <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.385 5.385 0 0 1-5.4 5.4 5.385 5.385 0 0 1-5.4-5.4c0-2.65 1.95-4.85 4.54-5.3A9.2 9.2 0 0 0 12 3z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1zM5.22 6.64a1 1 0 0 1 0-1.42l1.42-1.42a1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42L6.64 6.64a1 1 0 0 1-1.42 0zm10.6 10.6a1 1 0 0 1 0-1.42l1.42-1.42a1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42l-1.42 1.42a1 1 0 0 1-1.42 0zM2 12a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm15 0a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zM6.64 18.78a1 1 0 0 1-1.42 0l-1.42-1.42a1 1 0 0 1 0-1.42 1 1 0 0 1 1.42 0l1.42 1.42a1 1 0 0 1 0 1.42zm10.6-10.6a1 1 0 0 1-1.42 0l-1.42-1.42a1 1 0 0 1 0-1.42 1 1 0 0 1 1.42 0l1.42 1.42a1 1 0 0 1 0 1.42z"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn-primary nav-quote-btn">Request a Quote</a>
+        <button class="burger-menu" aria-label="Toggle navigation menu" id="burger-menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO / TITLE SECTION ===== -->
+  <section class="terms-hero">
+    <div class="container">
+      <span class="section-badge">Legal</span>
+      <h1 class="section-title" style="font-size: 3rem; margin-bottom: 0.5rem;">Terms &amp; Conditions</h1>
+      <div class="effective-date">
+        Effective Date: &nbsp;<span>16 July 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <div class="container">
+      <div class="terms-layout">
+
+        <!-- Sticky Table of Contents -->
+        <aside class="terms-toc" aria-label="Table of Contents">
+          <p class="terms-toc-title">Table of Contents</p>
+          <ul>
+            <li><a href="#section-1">1. Website Use</a></li>
+            <li><a href="#section-2">2. Product Information</a></li>
+            <li><a href="#section-3">3. Quotations</a></li>
+            <li><a href="#section-4">4. Intellectual Property</a></li>
+            <li><a href="#section-5">5. Customer Responsibilities</a></li>
+            <li><a href="#section-6">6. Confidential Information</a></li>
+            <li><a href="#section-7">7. Limitation of Liability</a></li>
+            <li><a href="#section-8">8. Third-Party Links</a></li>
+            <li><a href="#section-9">9. Privacy</a></li>
+            <li><a href="#section-10">10. Changes to These Terms</a></li>
+            <li><a href="#section-11">11. Governing Law</a></li>
+            <li><a href="#section-12">12. Contact Information</a></li>
+          </ul>
+        </aside>
+
+        <!-- Terms Content -->
+        <article class="terms-content">
+
+          <!-- Intro -->
+          <p class="terms-intro">
+            Welcome to the website of <strong>VP Machine Technologies</strong>. By accessing or using this website, you agree to comply with and be bound by the following Terms &amp; Conditions. If you do not agree with any part of these terms, please do not use this website.
+          </p>
+
+          <!-- 1. Website Use -->
+          <section class="terms-section" id="section-1">
+            <div class="terms-section-header">
+              <div class="terms-section-num">1</div>
+              <h2>Website Use</h2>
+            </div>
+            <p>This website is intended to provide information about VP Machine Technologies, our products, manufacturing capabilities, engineering services, and contact information.</p>
+            <p>You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others or interfere with the operation of the website.</p>
+          </section>
+
+          <!-- 2. Product Information -->
+          <section class="terms-section" id="section-2">
+            <div class="terms-section-header">
+              <div class="terms-section-num">2</div>
+              <h2>Product Information</h2>
+            </div>
+            <p>We strive to ensure that all product descriptions, specifications, images, and technical information are accurate. However:</p>
+            <ul>
+              <li>Specifications may change without prior notice.</li>
+              <li>Images are for illustration purposes only.</li>
+              <li>Availability of products may vary.</li>
+              <li>Information on this website does not constitute a binding offer.</li>
+            </ul>
+          </section>
+
+          <!-- 3. Quotations -->
+          <section class="terms-section" id="section-3">
+            <div class="terms-section-header">
+              <div class="terms-section-num">3</div>
+              <h2>Quotations</h2>
+            </div>
+            <p>Any quotation requested through this website:</p>
+            <ul>
+              <li>Is subject to technical evaluation.</li>
+              <li>May change depending on quantity, material availability, customization, and project requirements.</li>
+              <li>Is valid only for the period specified in the official quotation document.</li>
+            </ul>
+          </section>
+
+          <!-- 4. Intellectual Property -->
+          <section class="terms-section" id="section-4">
+            <div class="terms-section-header">
+              <div class="terms-section-num">4</div>
+              <h2>Intellectual Property</h2>
+            </div>
+            <p>All website content, including but not limited to:</p>
+            <ul>
+              <li>Company logo and branding</li>
+              <li>Product photographs and renders</li>
+              <li>CAD drawings and technical documents</li>
+              <li>Catalogs and videos</li>
+              <li>Website design, text, and graphics</li>
+            </ul>
+            <p>…is the exclusive property of <strong>VP Machine Technologies</strong> unless otherwise stated. No content may be copied, reproduced, distributed, or modified without prior written permission.</p>
+          </section>
+
+          <!-- 5. Customer Responsibilities -->
+          <section class="terms-section" id="section-5">
+            <div class="terms-section-header">
+              <div class="terms-section-num">5</div>
+              <h2>Customer Responsibilities</h2>
+            </div>
+            <p>Customers engaging with VP Machine Technologies are responsible for:</p>
+            <ul>
+              <li>Providing accurate and complete project requirements.</li>
+              <li>Verifying engineering drawings and specifications before production commences.</li>
+              <li>Ensuring all submitted information, documents, and designs are accurate and properly authorized.</li>
+            </ul>
+          </section>
+
+          <!-- 6. Confidential Information -->
+          <section class="terms-section" id="section-6">
+            <div class="terms-section-header">
+              <div class="terms-section-num">6</div>
+              <h2>Confidential Information</h2>
+            </div>
+            <p>Technical drawings, specifications, and project-related documents shared by customers will be treated with strict confidentiality. Such information will be used solely for the intended business purpose and will not be disclosed to any third party, subject to any applicable non-disclosure or confidentiality agreements.</p>
+          </section>
+
+          <!-- 7. Limitation of Liability -->
+          <section class="terms-section" id="section-7">
+            <div class="terms-section-header">
+              <div class="terms-section-num">7</div>
+              <h2>Limitation of Liability</h2>
+            </div>
+            <p>To the fullest extent permitted by applicable law, VP Machine Technologies shall not be liable for:</p>
+            <ul>
+              <li>Website interruptions or unavailability</li>
+              <li>Technical errors or inaccuracies on this website</li>
+              <li>Loss of data or unauthorized access to data</li>
+              <li>Indirect or consequential damages of any nature</li>
+              <li>Delays caused by third-party suppliers, logistics partners, or events beyond our reasonable control (including force majeure)</li>
+            </ul>
+          </section>
+
+          <!-- 8. Third-Party Links -->
+          <section class="terms-section" id="section-8">
+            <div class="terms-section-header">
+              <div class="terms-section-num">8</div>
+              <h2>Third-Party Links</h2>
+            </div>
+            <p>Our website may contain links to third-party websites for your convenience. VP Machine Technologies is not responsible for the content, accuracy, security, or privacy practices of those external websites. Visiting any third-party link is done entirely at your own risk.</p>
+          </section>
+
+          <!-- 9. Privacy -->
+          <section class="terms-section" id="section-9">
+            <div class="terms-section-header">
+              <div class="terms-section-num">9</div>
+              <h2>Privacy</h2>
+            </div>
+            <p>Your use of this website is also governed by our Privacy Policy, which explains how we collect, use, store, and protect your personal information. By using this website, you consent to the data practices described in our Privacy Policy.</p>
+          </section>
+
+          <!-- 10. Changes to These Terms -->
+          <section class="terms-section" id="section-10">
+            <div class="terms-section-header">
+              <div class="terms-section-num">10</div>
+              <h2>Changes to These Terms</h2>
+            </div>
+            <p>We reserve the right to modify these Terms &amp; Conditions at any time without prior notice. Any updated version will be posted on this page with a revised effective date. Your continued use of this website after any changes constitutes your acceptance of the new terms.</p>
+          </section>
+
+          <!-- 11. Governing Law -->
+          <section class="terms-section" id="section-11">
+            <div class="terms-section-header">
+              <div class="terms-section-num">11</div>
+              <h2>Governing Law</h2>
+            </div>
+            <p>These Terms &amp; Conditions are governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising from or in connection with the use of this website shall be subject to the exclusive jurisdiction of the competent courts in <strong>Belagavi, Karnataka</strong>.</p>
+          </section>
+
+          <!-- 12. Contact Information -->
+          <section class="terms-section" id="section-12">
+            <div class="terms-section-header">
+              <div class="terms-section-num">12</div>
+              <h2>Contact Information</h2>
+            </div>
+            <p>For any questions or concerns regarding these Terms &amp; Conditions, please reach out to us:</p>
+            <div class="terms-contact-card">
+              <strong style="display:block; font-size:1.05rem; margin-bottom:1.25rem; color: var(--text-primary); font-family: var(--font-heading);">VP Machine Technologies</strong>
+              <div class="contact-row">
+                <span class="contact-icon">📍</span>
+                <span>Plot No. 3275, Udyambag Industrial Estate, Belagavi – 590008, Karnataka, India</span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-icon">📧</span>
+                <span><a href="mailto:vpmachinetechnologies@gmail.com">vpmachinetechnologies@gmail.com</a></span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-icon">📞</span>
+                <span><a href="tel:+916360666755">+91 6360666755</a></span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-icon">🌐</span>
+                <span>www.vpmachinetechnologies.com</span>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div><!-- /.terms-layout -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/images/logo-dark.png" alt="VP Machine Technologies" class="logo-img logo-img-dark">
+            <img src="assets/images/logo-light.png" alt="VP Machine Technologies" class="logo-img logo-img-light">
+          </a>
+          <p>ISO-certified OEM precision manufacturer delivering quality machined components, automotive parts, heavy fabrications, and custom tools from Belagavi, Karnataka.</p>
+          <div class="footer-socials">
+            <a href="mailto:vpmachinetechnologies@gmail.com" class="footer-social-link" aria-label="Email Us">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+            <a href="tel:+916360666755" class="footer-social-link" aria-label="Call Us">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.79 6.3 8.58 5.11 8.58 3.88c0-.55-.45-1-1-1H3.88c-.55 0-1 .45-1 1C2.88 12.87 11.13 21.12 21.12 21.12c.55 0 1-.45 1-1v-3.75c0-.55-.45-1-1.01-1z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="products.html" class="footer-link">Products</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+            <li><a href="assets/docs/company_profile.pdf" target="_blank" class="footer-link">Company Profile (PDF)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?filter=machined" class="footer-link">Precision Machined Parts</a></li>
+            <li><a href="products.html?filter=automotive" class="footer-link">Automotive Components</a></li>
+            <li><a href="products.html?filter=fabricated" class="footer-link">Heavy Fabrication</a></li>
+            <li><a href="products.html?filter=sst" class="footer-link">Special Service Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <p>Plot No. 3275, Udyambag Industrial Estate, Belagavi – 590008, Karnataka</p>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <p><a href="mailto:vpmachinetechnologies@gmail.com">vpmachinetechnologies@gmail.com</a></p>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.79 6.3 8.58 5.11 8.58 3.88c0-.55-.45-1-1-1H3.88c-.55 0-1 .45-1 1C2.88 12.87 11.13 21.12 21.12 21.12c.55 0 1-.45 1-1v-3.75c0-.55-.45-1-1.01-1z"/></svg>
+              <p>+91 6360666755</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 VP Machine Technologies. All rights reserved. | Belagavi, Karnataka, India</p>
+        <ul class="footer-bottom-links">
+          <li><a href="privacy.html" class="footer-bottom-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-bottom-link">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Scroll back to top">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

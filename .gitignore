@@ -1,0 +1,9 @@
+# System / Temp files
+.DS_Store
+Thumbs.db
+
+# Gemini / IDE configs
+.gemini/
+.agents/
+.antigravityignore
+*.log
