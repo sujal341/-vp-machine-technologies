@@ -684,6 +684,24 @@ body.light-theme .sun-icon {
   align-items: center;
 }
 
+.about-grid-align-start {
+  align-items: start;
+}
+
+.about-profile-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.profile-certs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+
 .about-graphic {
   position: relative;
 }
@@ -2037,7 +2055,8 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
     gap: 3rem;
   }
 
-  .about-section-grid {
+  .about-section-grid,
+  .about-profile-grid {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
   }
@@ -2259,7 +2278,8 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
     order: -1;
   }
 
-  .about-section-grid {
+  .about-section-grid,
+  .about-profile-grid {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
@@ -2499,7 +2519,7 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
 
   /* --- ABOUT PAGE: EXECUTIVE PROFILE INLINE GRIDS --- */
   /* The B.Tech / Diploma 2-col inline grid */
-  .about-content div[style*="grid-template-columns: 1fr 1fr"] {
+  .profile-certs-grid {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
   }
