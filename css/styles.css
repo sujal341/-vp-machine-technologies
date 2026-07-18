@@ -1980,6 +1980,47 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Product Grid in visual card */
+.about-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4px;
+  background-color: var(--border-color);
+  width: 100%;
+  height: 100%;
+}
+
+.about-product-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Product Showcase Banner */
+.product-showcase-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.product-showcase-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .product-showcase-banner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .product-showcase-banner img:nth-child(n+3) {
+    display: none;
+  }
+}
 
 /* --- MOBILE SPECIFICS --- */
 @media (max-width: 1024px) {
