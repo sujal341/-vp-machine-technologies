@@ -108,15 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const zoomBtns = document.querySelectorAll('.lightbox-trigger');
 
   if (lightbox && lightboxImg && zoomBtns.length > 0) {
+    // Open lightbox from zoom button
     zoomBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const imgSrc = btn.getAttribute('data-image');
         const imgCaption = btn.getAttribute('data-title') || 'Product Image';
-        
         lightboxImg.src = imgSrc;
         lightboxCaption.textContent = imgCaption;
         lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Stop scrolling background
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Also open lightbox when clicking product image directly
+    document.querySelectorAll('.product-img-container img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = img.alt || 'Product Image';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
     });
 
