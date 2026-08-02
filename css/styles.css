@@ -2655,3 +2655,13 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
   box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
 }
 
+/* ===== HERO LOGO ANIMATION ===== */
+@keyframes heroLogoPulse {
+  0%   { transform: translateY(0px) scale(1);   filter: drop-shadow(0 8px 32px rgba(232,101,26,0.35)) drop-shadow(0 2px 12px rgba(0,0,0,0.45)); }
+  100% { transform: translateY(-10px) scale(1.04); filter: drop-shadow(0 16px 40px rgba(232,101,26,0.55)) drop-shadow(0 4px 20px rgba(0,0,0,0.55)); }
+}
+
+@media (max-width: 640px) {
+  .hero-logo-right { display: none; }
+}
+
