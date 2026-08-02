@@ -1,34 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
-/* --- DESIGN SYSTEM TOKENS --- */
+/* --- DESIGN SYSTEM TOKENS (Light Mode Permanent) --- */
 :root {
-  /* Colors (Vibrant Teal-to-Indigo Dark Theme - Matching Reference Image) */
-  --bg-primary: #12213a;
-  --bg-secondary: rgba(22, 38, 66, 0.75);
-  --bg-tertiary: rgba(14, 25, 45, 0.85);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --accent: #f97316;
-  --accent-hover: #ea580c;
-  --accent-rgb: 249, 115, 22;
-  --border-color: rgba(255, 255, 255, 0.16);
-  --header-bg: rgba(18, 33, 58, 0.85);
-  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45);
-  --success: #10b981;
-  
-  /* Fonts */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  
-  /* Transitions & Radii */
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 24px;
-}
-
-/* Soft Powder-Blue Light Theme Overrides (Matching Reference Image) */
-body.light-theme {
+  /* Colors (Light Theme Defaults) */
   --bg-primary: #eaf3fc;
   --bg-secondary: #ffffff;
   --bg-tertiary: #d9e8f7;
@@ -40,8 +14,17 @@ body.light-theme {
   --border-color: #c8dce8;
   --header-bg: rgba(234, 243, 252, 0.9);
   --card-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.07);
-  background: radial-gradient(circle at 50% 30%, #f4f9ff 0%, #e5f1fd 65%, #d8e9fa 100%) !important;
-  background-attachment: fixed !important;
+  --success: #10b981;
+  
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Transitions & Radii */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
 }
 
 /* --- RESET & BASE STYLES --- */
@@ -58,7 +41,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: radial-gradient(circle at 0% 100%, #0096c7 0%, #163675 45%, #2a085c 100%);
+  background: radial-gradient(circle at 50% 30%, #f4f9ff 0%, #e5f1fd 65%, #d8e9fa 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;

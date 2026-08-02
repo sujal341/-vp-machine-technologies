@@ -31,23 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- DARK/LIGHT THEME SWITCHER ---
-  const themeToggleBtn = document.querySelector('.theme-toggle-btn');
-  
-  if (themeToggleBtn) {
-    // Check saved theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-theme');
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-theme');
-      
-      const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-      localStorage.setItem('theme', currentTheme);
-    });
-  }
+  // Theme mode locked to light mode permanently
 
   // --- MOBILE BURGER MENU ---
   const burgerMenuBtn = document.querySelector('.burger-menu');
