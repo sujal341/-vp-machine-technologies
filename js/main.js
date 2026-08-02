@@ -243,6 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // Generate unique Enquiry Reference Number (e.g. VPM-784920)
       const enquiryRef = 'VPM-' + Math.floor(100000 + Math.random() * 900000);
 
+      // Populate hidden form input fields
+      const formEnquiryRefInput = document.getElementById('form-enquiry-ref');
+      const formSubjectInput = document.getElementById('form-subject');
+      const formAutoresponseInput = document.getElementById('form-autoresponse');
+
+      if (formEnquiryRefInput) formEnquiryRefInput.value = enquiryRef;
+      if (formSubjectInput) formSubjectInput.value = `New Technical Query [Ref: ${enquiryRef}] - VP Machine Technologies`;
+      if (formAutoresponseInput) {
+        formAutoresponseInput.value = `Thank you for contacting VP Machine Technologies.\n\nWe have received your technical query under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
+      }
+
       const submitBtn = inquiryForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
 
@@ -253,23 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const formData = new FormData(inquiryForm);
-        const data = Object.fromEntries(formData.entries());
 
-        // Add Enquiry Reference Number & Auto-response configuration to payload
-        data["Enquiry Reference Number"] = enquiryRef;
-        data["_subject"] = `New Technical Inquiry [Ref: ${enquiryRef}] - VP Machine Technologies`;
-        data["_replyto"] = email;
-        data["email"] = email; // Ensures FormSubmit sends auto-acknowledgement email
-        data["_autoresponse"] = `Dear ${name},\n\nThank you for contacting VP Machine Technologies.\nWe have received your technical enquiry under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
-
-        // Send submission request in background
+        // Send submission request to FormSubmit AJAX endpoint
         fetch('https://formsubmit.co/ajax/vpmachinetechnologies@gmail.com', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify(data)
+          body: formData
         }).catch(err => console.log('Background submit:', err));
 
         // Show confirmation popup modal to the user with reference number & email
