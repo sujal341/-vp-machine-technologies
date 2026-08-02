@@ -2,18 +2,18 @@
 
 /* --- DESIGN SYSTEM TOKENS --- */
 :root {
-  /* Colors (Dark Theme Default) */
-  --bg-primary: #0b0f19;
-  --bg-secondary: #131b2e;
-  --bg-tertiary: #080b13;
+  /* Colors (Vibrant Teal-to-Indigo Dark Theme - Matching Reference Image) */
+  --bg-primary: #12213a;
+  --bg-secondary: rgba(22, 38, 66, 0.75);
+  --bg-tertiary: rgba(14, 25, 45, 0.85);
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --text-secondary: #cbd5e1;
   --accent: #f97316;
   --accent-hover: #ea580c;
   --accent-rgb: 249, 115, 22;
-  --border-color: #1e293b;
-  --header-bg: rgba(11, 15, 25, 0.8);
-  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  --border-color: rgba(255, 255, 255, 0.16);
+  --header-bg: rgba(18, 33, 58, 0.85);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.45);
   --success: #10b981;
   
   /* Fonts */
@@ -27,19 +27,21 @@
   --radius-lg: 24px;
 }
 
-/* Light Theme Overrides */
+/* Soft Powder-Blue Light Theme Overrides (Matching Reference Image) */
 body.light-theme {
-  --bg-primary: #f8fafc;
+  --bg-primary: #eaf3fc;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f5f9;
+  --bg-tertiary: #d9e8f7;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --accent: #ea580c;
   --accent-hover: #c2410c;
   --accent-rgb: 234, 88, 12;
-  --border-color: #e2e8f0;
-  --header-bg: rgba(248, 250, 252, 0.85);
-  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+  --border-color: #c8dce8;
+  --header-bg: rgba(234, 243, 252, 0.9);
+  --card-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.07);
+  background: radial-gradient(circle at 50% 30%, #f4f9ff 0%, #e5f1fd 65%, #d8e9fa 100%) !important;
+  background-attachment: fixed !important;
 }
 
 /* --- RESET & BASE STYLES --- */
@@ -56,12 +58,13 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
+  background: radial-gradient(circle at 0% 100%, #0096c7 0%, #163675 45%, #2a085c 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   font-weight: 450;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Scrollbar */
@@ -312,66 +315,36 @@ img {
 .logo {
   display: flex;
   align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 4px 10px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.logo:hover {
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.25);
 }
 
 .logo-img {
-  height: 80px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   display: block;
   transition: var(--transition-smooth);
 }
 
-/* Logo variant display rules */
+/* Show only one logo — new logo works on both themes */
 .logo-img-dark {
-  display: block;
-}
-.logo-img-light {
   display: none;
 }
-
-/* Light Theme - Footer (always light bg in light theme) */
-body.light-theme .footer .logo-img-dark {
-  display: none !important;
-}
-body.light-theme .footer .logo-img-light {
-  display: block !important;
-}
-
-/* Light Theme - Scrolled Header / Menu Open Header (always light bg in light theme) */
-body.light-theme .header.scrolled .logo-img-dark,
-body.light-theme .header.menu-open .logo-img-dark {
-  display: none !important;
-}
-body.light-theme .header.scrolled .logo-img-light,
-body.light-theme .header.menu-open .logo-img-light {
-  display: block !important;
-}
-
-/* Light Theme - Transparent Header (before scroll) */
-/* For pages with dark heros (home, contact), we keep the dark logo because background is dark */
-body.light-theme.page-home .header:not(.scrolled) .logo-img-dark,
-body.light-theme.page-contact .header:not(.scrolled) .logo-img-dark {
-  display: block !important;
-}
-body.light-theme.page-home .header:not(.scrolled) .logo-img-light,
-body.light-theme.page-contact .header:not(.scrolled) .logo-img-light {
-  display: none !important;
-}
-
-/* For pages with light heros (about, products), we show the light logo because background is light */
-body.light-theme.page-about .header:not(.scrolled) .logo-img-dark,
-body.light-theme.page-products .header:not(.scrolled) .logo-img-dark {
-  display: none !important;
-}
-body.light-theme.page-about .header:not(.scrolled) .logo-img-light,
-body.light-theme.page-products .header:not(.scrolled) .logo-img-light {
-  display: block !important;
+.logo-img-light {
+  display: block;
 }
 
 
 .header.scrolled .logo-img {
-  height: 58px;
+  height: 40px;
 }
 
 /* Fallback icon for places that still use the text logo */
@@ -379,10 +352,18 @@ body.light-theme.page-products .header:not(.scrolled) .logo-img-light {
   display: none;
 }
 
-/* Footer logo slightly smaller */
+/* Footer logo */
+.footer .logo {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: inline-flex;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
 .footer .logo-img {
-  height: 68px;
-  opacity: 0.9;
+  height: 52px;
+  opacity: 0.95;
 }
 
 .footer .logo-img:hover {
@@ -915,14 +896,22 @@ body.light-theme .sun-icon {
   height: 240px;
   overflow: hidden;
   position: relative;
-  background-color: var(--bg-tertiary);
+  background-color: #ffffff;
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body:not(.light-theme) .product-img-container {
+  background-color: #0f172a;
 }
 
 .product-img-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 0.5rem;
   transition: var(--transition-smooth);
 }
 
@@ -2571,5 +2560,98 @@ body.light-theme.page-contact .header:not(.scrolled) .theme-toggle-btn {
   .footer-grid {
     gap: 2rem;
   }
+}
+
+/* --- ENQUIRY SUCCESS POPUP MODAL --- */
+.enquiry-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.enquiry-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.enquiry-modal-card {
+  background: var(--bg-secondary, #111827);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border-radius: 16px;
+  max-width: 460px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: scale(0.85);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.enquiry-modal-overlay.active .enquiry-modal-card {
+  transform: scale(1);
+}
+
+.enquiry-modal-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  animation: pulseSuccess 2s infinite;
+}
+
+@keyframes pulseSuccess {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.enquiry-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.75rem;
+}
+
+.enquiry-modal-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #9ca3af);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.enquiry-modal-close-btn {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  width: 100%;
+}
+
+.enquiry-modal-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
 }
 

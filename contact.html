@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | VP Machine Technologies</title>
   <meta name="description" content="Get in touch with VP Machine Technologies in Belagavi, Karnataka. Request a manufacturing quote, request engineering reviews, or call us directly at +91 6360666755.">
+  <link rel="canonical" href="https://vpmachinetechnologies.com/contact.html">
   <link rel="stylesheet" href="css/styles.css?v=1.2">
 </head>
 <body class="page-contact">
@@ -52,7 +53,7 @@
           <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.385 5.385 0 0 1-5.4 5.4 5.385 5.385 0 0 1-5.4-5.4c0-2.65 1.95-4.85 4.54-5.3A9.2 9.2 0 0 0 12 3z"/></svg>
           <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1zM5.22 6.64a1 1 0 0 1 0-1.42l1.42-1.42a1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42L6.64 6.64a1 1 0 0 1-1.42 0zm10.6 10.6a1 1 0 0 1 0-1.42l1.42-1.42a1 1 0 0 1 1.42 0 1 1 0 0 1 0 1.42l-1.42 1.42a1 1 0 0 1-1.42 0zM2 12a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm15 0a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zM6.64 18.78a1 1 0 0 1-1.42 0l-1.42-1.42a1 1 0 0 1 0-1.42 1 1 0 0 1 1.42 0l1.42 1.42a1 1 0 0 1 0 1.42zm10.6-10.6a1 1 0 0 1-1.42 0l-1.42-1.42a1 1 0 0 1 0-1.42 1 1 0 0 1 1.42 0l1.42 1.42a1 1 0 0 1 0 1.42z"/></svg>
         </button>
-        <a href="contact.html" class="btn btn-primary nav-quote-btn">Request a Quote</a>
+
         <button class="burger-menu" aria-label="Toggle navigation menu" id="burger-menu">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -177,62 +178,46 @@
           <h2 class="form-title">Send Technical Query</h2>
           <p class="form-subtitle">Fill in the fields below and our engineers will get back to you with structural quotes.</p>
           
-          <form id="inquiry-form" novalidate>
+          <form id="inquiry-form" action="https://formsubmit.co/vpmachinetechnologies@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Website Inquiry - VP Machine Technologies">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
             <div class="form-grid">
               
               <div class="form-group">
                 <label for="name" class="form-label">Full Name *</label>
-                <input type="text" id="name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                <input type="text" id="name" name="Full Name" class="form-control" placeholder="e.g. Rahul Sharma" required>
               </div>
 
               <div class="form-group">
                 <label for="email" class="form-label">Corporate Email *</label>
-                <input type="email" id="email" class="form-control" placeholder="e.g. name@company.com" required>
+                <input type="email" id="email" name="Corporate Email" class="form-control" placeholder="e.g. name@company.com" required>
               </div>
 
               <div class="form-group">
                 <label for="phone" class="form-label">Contact Number *</label>
-                <input type="tel" id="phone" class="form-control" placeholder="e.g. +91 9876543210" required>
+                <input type="tel" id="phone" name="Contact Number" class="form-control" placeholder="e.g. +91 9876543210" required>
               </div>
 
               <div class="form-group">
                 <label for="company" class="form-label">Company Name</label>
-                <input type="text" id="company" class="form-control" placeholder="e.g. Enterprises Ltd.">
+                <input type="text" id="company" name="Company Name" class="form-control" placeholder="e.g. Enterprises Ltd.">
               </div>
 
               <div class="form-group form-full-width">
                 <label for="product-interest" class="form-label">Area of Interest</label>
-                <select id="product-interest" class="form-control">
-                  <option value="General Inquiry">General Business Inquiry</option>
+                <select id="product-interest" name="Area of Interest" class="form-control">
                   <option value="Precision Machined Components">Precision Machined Components</option>
-                  <option value="Automotive Components">Automotive Components</option>
-                  <option value="Heavy Fabricated Components">Heavy Fabricated Components</option>
-                  <option value="Special Service Tools">Special Service Tools (SST)</option>
-                  <!-- Custom options matching query parameters -->
-                  <option value="High-Tolerance Threaded Shaft">High-Tolerance Threaded Shaft</option>
-                  <option value="Cast Iron Flange Adaptor">Cast Iron Flange Adaptor</option>
-                  <option value="Heavy Duty Mounting Bracket">Heavy Duty Mounting Bracket</option>
-                  <option value="Tractor Hydraulic SST Wrench">Tractor Hydraulic SST Wrench</option>
-                  <option value="Precision CNC Turned Bushing">Precision CNC Turned Bushing</option>
-                  <option value="Transmission Output Gear Hub">Transmission Output Gear Hub</option>
-                  <option value="Reinforced Welded Pillar Base">Reinforced Welded Pillar Base</option>
-                  <option value="Spline Shaft Adjuster Tool">Spline Shaft Adjuster Tool</option>
-                  <option value="Cylindrical Pin Coupler">Cylindrical Pin Coupler</option>
-                  <option value="Diesel Engine Valve Housing">Diesel Engine Valve Housing</option>
-                  <option value="Fabricated Steel Cable Anchor">Fabricated Steel Cable Anchor</option>
-                  <option value="Valve Core Extractor Tool">Valve Core Extractor Tool</option>
-                  <option value="Machined Spacer Rings">Machined Spacer Rings</option>
-                  <option value="Flywheel Adapter Ring">Flywheel Adapter Ring</option>
-                  <option value="Heavy Truss Connector Plate">Heavy Truss Connector Plate</option>
-                  <option value="Wheel Hub Puller SST">Wheel Hub Puller SST</option>
-                  <option value="Precision Threaded Stud">Precision Threaded Stud</option>
-                  <option value="Brake Caliper Sliding Pin">Brake Caliper Sliding Pin</option>
+                  <option value="Tractor Special Service Tools">Tractor Special Service Tools</option>
+                  <option value="Heavy &amp; Light Fabricated Tools">Heavy &amp; Light Fabricated Tools</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
               <div class="form-group form-full-width">
                 <label for="message" class="form-label">Engineering Specifications & Requirements *</label>
-                <textarea id="message" class="form-control" placeholder="Describe dimensional tolerances, material grade, and estimated volumes..." required></textarea>
+                <textarea id="message" name="Engineering Specifications & Requirements" class="form-control" placeholder="Describe dimensional tolerances, material grade, and estimated volumes..." required></textarea>
               </div>
 
               <div class="form-full-width">
@@ -326,6 +311,22 @@
   <button class="back-to-top" aria-label="Scroll back to top">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
   </button>
+
+  <!-- ===== ENQUIRY SENT SUCCESS POPUP MODAL ===== -->
+  <div id="enquiry-modal" class="enquiry-modal-overlay" aria-hidden="true">
+    <div class="enquiry-modal-card">
+      <div class="enquiry-modal-icon">
+        <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="enquiry-modal-title">Enquiry Sent!</h3>
+      <p class="enquiry-modal-text">
+        Thank you, <span id="modal-user-name" style="color: #f97316; font-weight: 700;">Customer</span>! Your engineering specifications &amp; enquiry have been successfully submitted to <strong>VP Machine Technologies</strong>. Our team will review your requirements and respond shortly.
+      </p>
+      <button id="enquiry-modal-close" class="enquiry-modal-close-btn">OK, Got It</button>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

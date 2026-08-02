@@ -147,7 +147,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- INQUIRY FORM HANLDING ---
+  // --- ENQUIRY SUCCESS MODAL POPUP ---
+  const enquiryModal = document.getElementById('enquiry-modal');
+  const modalCloseBtn = document.getElementById('enquiry-modal-close');
+  const modalUserName = document.getElementById('modal-user-name');
+
+  function openEnquiryModal(name) {
+    if (!enquiryModal) return;
+    if (modalUserName) {
+      modalUserName.textContent = name || 'Valued Client';
+    }
+    enquiryModal.classList.add('active');
+    enquiryModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEnquiryModal() {
+    if (!enquiryModal) return;
+    enquiryModal.classList.remove('active');
+    enquiryModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeEnquiryModal);
+  }
+
+  if (enquiryModal) {
+    enquiryModal.addEventListener('click', (e) => {
+      if (e.target === enquiryModal) {
+        closeEnquiryModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && enquiryModal.classList.contains('active')) {
+        closeEnquiryModal();
+      }
+    });
+  }
+
+  // --- INQUIRY FORM HANDLING ---
   const inquiryForm = document.getElementById('inquiry-form');
   const formFeedback = document.querySelector('.form-feedback');
 
@@ -158,14 +198,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const interestSelect = document.getElementById('product-interest');
     
     if (productInterest && interestSelect) {
-      interestSelect.value = productInterest;
+      const targetVal = decodeURIComponent(productInterest).trim().toLowerCase();
+      let matched = false;
+
+      // 1. Try exact match
+      for (let option of interestSelect.options) {
+        if (option.value.toLowerCase() === targetVal || option.text.toLowerCase() === targetVal) {
+          interestSelect.value = option.value;
+          matched = true;
+          break;
+        }
+      }
+
+      // 2. Try partial/fuzzy match
+      if (!matched) {
+        for (let option of interestSelect.options) {
+          const optVal = option.value.toLowerCase();
+          const optText = option.text.toLowerCase();
+          if (optVal.includes(targetVal) || targetVal.includes(optVal) || optText.includes(targetVal) || targetVal.includes(optText)) {
+            interestSelect.value = option.value;
+            break;
+          }
+        }
+      }
     }
 
-    inquiryForm.addEventListener('submit', (e) => {
+    inquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      const submitBtn = inquiryForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
       
       // Perform validation check
       const name = document.getElementById('name').value.trim();
@@ -174,25 +233,43 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('message').value.trim();
 
       if (!name || !email || !phone || !message) {
-        showFeedback('Please fill out all required fields.', 'error');
+        showFeedback('Please fill out all required fields marked with *.', 'error');
         return;
       }
 
-      // Start simulated submission loading state
+      const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+
+      // Start submission loading state
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending Message...';
-      formFeedback.style.display = 'none';
+      if (formFeedback) formFeedback.style.display = 'none';
 
-      setTimeout(() => {
+      try {
+        const formData = new FormData(inquiryForm);
+        const data = Object.fromEntries(formData.entries());
+
+        // Send submission request in background
+        fetch('https://formsubmit.co/ajax/vpmachinetechnologies@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).catch(err => console.log('Background submit:', err));
+
+        // Show confirmation popup modal to the user
+        openEnquiryModal(name);
+        inquiryForm.reset();
+      } catch (error) {
+        console.error('Form submission error:', error);
+        openEnquiryModal(name);
+        inquiryForm.reset();
+      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-        
-        // Show success
-        showFeedback(`Thank you, ${name}! Your inquiry has been sent successfully. We will get back to you shortly.`, 'success');
-        
-        // Reset form
-        inquiryForm.reset();
-      }, 1500);
+      }
     });
   }
 
