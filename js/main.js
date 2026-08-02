@@ -151,12 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const enquiryModal = document.getElementById('enquiry-modal');
   const modalCloseBtn = document.getElementById('enquiry-modal-close');
   const modalUserName = document.getElementById('modal-user-name');
+  const modalEnquiryRef = document.getElementById('modal-enquiry-ref');
+  const modalUserEmail = document.getElementById('modal-user-email');
 
-  function openEnquiryModal(name) {
+  function openEnquiryModal(name, enquiryRef, email) {
     if (!enquiryModal) return;
-    if (modalUserName) {
-      modalUserName.textContent = name || 'Valued Client';
-    }
+    if (modalUserName) modalUserName.textContent = name || 'Valued Client';
+    if (modalEnquiryRef) modalEnquiryRef.textContent = enquiryRef || 'VPM-000000';
+    if (modalUserEmail) modalUserEmail.textContent = email || 'your corporate email';
+
     enquiryModal.classList.add('active');
     enquiryModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -237,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // Generate unique Enquiry Reference Number (e.g. VPM-784920)
+      const enquiryRef = 'VPM-' + Math.floor(100000 + Math.random() * 900000);
+
       const submitBtn = inquiryForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
 
@@ -249,6 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(inquiryForm);
         const data = Object.fromEntries(formData.entries());
 
+        // Add Enquiry Reference Number & Auto-response configuration to payload
+        data["Enquiry Reference Number"] = enquiryRef;
+        data["_subject"] = `New Technical Inquiry [Ref: ${enquiryRef}] - VP Machine Technologies`;
+        data["_replyto"] = email;
+        data["email"] = email; // Ensures FormSubmit sends auto-acknowledgement email
+        data["_autoresponse"] = `Dear ${name},\n\nThank you for contacting VP Machine Technologies.\nWe have received your technical enquiry under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
+
         // Send submission request in background
         fetch('https://formsubmit.co/ajax/vpmachinetechnologies@gmail.com', {
           method: 'POST',
@@ -259,12 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify(data)
         }).catch(err => console.log('Background submit:', err));
 
-        // Show confirmation popup modal to the user
-        openEnquiryModal(name);
+        // Show confirmation popup modal to the user with reference number & email
+        openEnquiryModal(name, enquiryRef, email);
         inquiryForm.reset();
       } catch (error) {
         console.error('Form submission error:', error);
-        openEnquiryModal(name);
+        openEnquiryModal(name, enquiryRef, email);
         inquiryForm.reset();
       } finally {
         submitBtn.disabled = false;

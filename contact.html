@@ -319,9 +319,19 @@
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
-      <h3 class="enquiry-modal-title">Enquiry Sent!</h3>
-      <p class="enquiry-modal-text">
-        Thank you, <span id="modal-user-name" style="color: #f97316; font-weight: 700;">Customer</span>! Your engineering specifications &amp; enquiry have been successfully submitted to <strong>VP Machine Technologies</strong>. Our team will review your requirements and respond shortly.
+      <h3 class="enquiry-modal-title">Enquiry Successfully Sent!</h3>
+      <p class="enquiry-modal-text" style="margin-bottom: 0.5rem;">
+        Thank you, <span id="modal-user-name" style="color: #f97316; font-weight: 700;">Customer</span>! Your engineering specifications have been submitted.
+      </p>
+
+      <!-- Enquiry Reference Number Display Box -->
+      <div style="background: rgba(249, 115, 22, 0.08); border: 1.5px dashed #f97316; border-radius: 10px; padding: 0.85rem 1rem; margin: 1rem 0 1.25rem 0; text-align: center;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); display: block; margin-bottom: 4px;">Enquiry Reference Number</span>
+        <strong id="modal-enquiry-ref" style="font-size: 1.4rem; color: #f97316; letter-spacing: 2px; font-family: monospace;">VPM-849201</strong>
+      </div>
+
+      <p class="enquiry-modal-text" style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
+        ✉️ An acknowledgment email has been automatically sent to <strong id="modal-user-email" style="color: var(--text-primary);">your email address</strong>. Please save your reference number for future communication.
       </p>
       <button id="enquiry-modal-close" class="enquiry-modal-close-btn">OK, Got It</button>
     </div>
