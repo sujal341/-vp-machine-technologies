@@ -551,14 +551,15 @@ body.light-theme .sun-icon {
 }
 
 .hero .btn-outline {
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #ffffff !important;
 }
 
 .hero .btn-outline:hover {
-  background-color: #ffffff !important;
-  color: #080b13 !important;
-  border-color: #ffffff !important;
+  background-color: #e8651a !important;
+  color: #ffffff !important;
+  border-color: #e8651a !important;
 }
 
 
