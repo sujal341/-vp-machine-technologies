@@ -195,8 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const formFeedback = document.querySelector('.form-feedback');
 
   if (inquiryForm) {
-    // Pre-fill interest if product selected via URL param
     const urlParams = new URLSearchParams(window.location.search);
+
+    // 1. Check if returning from FormSubmit post-redirection
+    if (urlParams.get('submitted') === 'true') {
+      const subName = urlParams.get('name') || 'Valued Client';
+      const subRef = urlParams.get('ref') || 'VPM-000000';
+      const subEmail = urlParams.get('email') || 'your corporate email';
+
+      openEnquiryModal(subName, subRef, subEmail);
+
+      // Clean up URL parameters cleanly without page refresh
+      if (window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+
+    // Pre-fill interest if product selected via URL param
     const productInterest = urlParams.get('product');
     const interestSelect = document.getElementById('product-interest');
     
@@ -226,9 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    inquiryForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
+    inquiryForm.addEventListener('submit', (e) => {
       // Perform validation check
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
@@ -236,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('message').value.trim();
 
       if (!name || !email || !phone || !message) {
+        e.preventDefault();
         showFeedback('Please fill out all required fields marked with *.', 'error');
         return;
       }
@@ -247,43 +261,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const formEnquiryRefInput = document.getElementById('form-enquiry-ref');
       const formSubjectInput = document.getElementById('form-subject');
       const formAutoresponseInput = document.getElementById('form-autoresponse');
+      const formNextInput = document.getElementById('form-next');
 
       if (formEnquiryRefInput) formEnquiryRefInput.value = enquiryRef;
       if (formSubjectInput) formSubjectInput.value = `New Technical Query [Ref: ${enquiryRef}] - VP Machine Technologies`;
       if (formAutoresponseInput) {
-        formAutoresponseInput.value = `Thank you for contacting VP Machine Technologies.\n\nWe have received your technical query under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
+        formAutoresponseInput.value = `Dear ${name},\n\nThank you for contacting VP Machine Technologies.\nWe have received your technical query under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
+      }
+      if (formNextInput) {
+        const returnUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + `?submitted=true&ref=${enquiryRef}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+        formNextInput.value = returnUrl;
       }
 
       const submitBtn = inquiryForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-
-      // Start submission loading state
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending Message...';
-      if (formFeedback) formFeedback.style.display = 'none';
-
-      try {
-        const formData = new FormData(inquiryForm);
-
-        // Send submission request to FormSubmit AJAX endpoint
-        fetch('https://formsubmit.co/ajax/vpmachinetechnologies@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        }).catch(err => console.log('Background submit:', err));
-
-        // Show confirmation popup modal to the user with reference number & email
-        openEnquiryModal(name, enquiryRef, email);
-        inquiryForm.reset();
-      } catch (error) {
-        console.error('Form submission error:', error);
-        openEnquiryModal(name, enquiryRef, email);
-        inquiryForm.reset();
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending Message...';
       }
     });
   }
