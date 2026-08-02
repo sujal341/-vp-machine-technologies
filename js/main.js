@@ -241,7 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    inquiryForm.addEventListener('submit', (e) => {
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
       // Perform validation check
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
@@ -249,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('message').value.trim();
 
       if (!name || !email || !phone || !message) {
-        e.preventDefault();
         showFeedback('Please fill out all required fields marked with *.', 'error');
         return;
       }
@@ -257,26 +258,44 @@ document.addEventListener('DOMContentLoaded', () => {
       // Generate unique Enquiry Reference Number (e.g. VPM-784920)
       const enquiryRef = 'VPM-' + Math.floor(100000 + Math.random() * 900000);
 
-      // Populate hidden form input fields
-      const formEnquiryRefInput = document.getElementById('form-enquiry-ref');
-      const formSubjectInput = document.getElementById('form-subject');
-      const formAutoresponseInput = document.getElementById('form-autoresponse');
-      const formNextInput = document.getElementById('form-next');
-
-      if (formEnquiryRefInput) formEnquiryRefInput.value = enquiryRef;
-      if (formSubjectInput) formSubjectInput.value = `New Technical Query [Ref: ${enquiryRef}] - VP Machine Technologies`;
-      if (formAutoresponseInput) {
-        formAutoresponseInput.value = `Dear ${name},\n\nThank you for contacting VP Machine Technologies.\nWe have received your technical query under Reference Number: ${enquiryRef}.\n\nOur engineering team will review your specifications and get back to you shortly.\n\nBest Regards,\nVP Machine Technologies Team\nBelagavi, Karnataka\nPhone: +91 6360666755\nEmail: vpmachinetechnologies@gmail.com`;
-      }
-      if (formNextInput) {
-        const returnUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + `?submitted=true&ref=${enquiryRef}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
-        formNextInput.value = returnUrl;
-      }
-
       const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : 'Send Inquiry';
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending Message...';
+      }
+      if (formFeedback) formFeedback.style.display = 'none';
+
+      // Populate hidden form input fields
+      const formEnquiryRefInput = document.getElementById('form-enquiry-ref');
+      const formSubjectInput = document.getElementById('form-subject');
+      const formReplytoInput = document.getElementById('form-replyto');
+
+      if (formEnquiryRefInput) formEnquiryRefInput.value = enquiryRef;
+      if (formSubjectInput) formSubjectInput.value = `New Technical Query [Ref: ${enquiryRef}] - VP Machine Technologies`;
+      if (formReplytoInput) formReplytoInput.value = email;
+
+      try {
+        const formData = new FormData(inquiryForm);
+
+        // Send submission request to Web3Forms API endpoint
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        }).catch(err => console.log('Background submit:', err));
+
+        // Show confirmation popup modal to the user with reference number & email
+        openEnquiryModal(name, enquiryRef, email);
+        inquiryForm.reset();
+      } catch (error) {
+        console.error('Form submission error:', error);
+        openEnquiryModal(name, enquiryRef, email);
+        inquiryForm.reset();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
       }
     });
   }
